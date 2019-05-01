@@ -3,6 +3,13 @@ package com.luca;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * https://www.hackerrank.com/challenges/sherlock-and-anagrams
+ * <p>
+ * Using character maps and accumulating first there's no need for substring
+ * and the order for obtaining the substrings is N*N*M with N being length of the string
+ * and M being the amount of distinct characters in the string.
+ */
 public class Anagrams2 {
 
     static class CharacterList {
@@ -28,7 +35,7 @@ public class Anagrams2 {
             HashMap<Character, Integer> differenceMap = new HashMap<>(map);
             characterList.map.entrySet().stream().forEach(
                     entry -> {
-                        if(differenceMap.get(entry.getKey()) == entry.getValue()) differenceMap.remove(entry.getKey());
+                        if (differenceMap.get(entry.getKey()) == entry.getValue()) differenceMap.remove(entry.getKey());
                         else differenceMap.merge(entry.getKey(), entry.getValue() * -1, Integer::sum);
                     }
             );
